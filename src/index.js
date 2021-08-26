@@ -1,17 +1,8 @@
-const httpServer = require("http").createServer();
-const io = require("socket.io")(httpServer, {
-  
-  cors: {
-    origin: "*"
-  }
-});
+const app = require("./app");
 
-const port = 8080;
+const port = 3000;
 
-io.on("connection", () => {
-  console.log("Connection");
-})
-
-httpServer.listen(port, () => {
-  console.log(`Server listen: ${port}`);
+app.listen(port, () => {
+  console.log("GPIO is accessible", app.GPIO.accessible);
+  console.log(`Listen on port: ${port}`);
 });
